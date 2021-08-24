@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .two_color_ball {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+        }
+        .ball_content{
+            flex: 1;
+        }
+
+        .ball {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 50px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .blue_ball {
+            border: 2px red solid;
+        }
+
+        .red_ball {
+            border: 2px blue solid;
+        }
+    </style>
+</head>
+<body>
+<div class="two_color_ball">
+    <div class="ball_content">
+        <div class="ball blue_ball"></div>
+    </div>
+    <div class="ball_content">
+        <div class="ball blue_ball"></div>
+    </div>
+    <div class="ball_content">
+        <div class="ball blue_ball"></div>
+    </div>
+    <div class="ball_content">
+        <div class="ball blue_ball"></div>
+    </div>
+    <div class="ball_content">
+        <div class="ball blue_ball"></div>
+    </div>
+    <div class="ball_content">
+        <div class="ball blue_ball"></div>
+    </div>
+    <div class="ball_content">
+        <div class="ball red_ball"></div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    function load() {
+        let balls = document.getElementsByClassName('ball')
+        let res = []
+        const NUMBERS = [
+            "01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
+            "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+            "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
+            "31", "32", "33"
+        ]
+        for (let i = 0; i < 6; i++) {
+            let blueNumber = NUMBERS[Math.floor(Math.random() * 33)]
+            while(res.indexOf(blueNumber) !== -1){
+                blueNumber = NUMBERS[Math.floor(Math.random() * 33)]
+            }
+            res.push(blueNumber)
+        }
+        res.push(NUMBERS[Math.floor(Math.random() * 16)])
+        for (let i = 0; i < balls.length; i++) {
+            balls[i].append(res[i])
+        }
+    }
+
+    window.onload = load
+</script>
+
+</html>
